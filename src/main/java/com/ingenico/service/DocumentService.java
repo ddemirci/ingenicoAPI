@@ -30,7 +30,7 @@ public class DocumentService extends BaseService {
 
         List<Document> documents = documentRepository.getAll(profileId);
         return documents.size() == 0
-                ? Response.status(204,"No documents were found").build()
+                ? ResponseWithStatusAndMessage(204,"No documents were found")
                 : OkWithEntity(documents);
     }
 

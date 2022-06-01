@@ -31,7 +31,7 @@ public class ProfileService extends BaseService{
     public Response GetAll() {
         List<Profile> profiles = profileRepository.getAll();
         return profiles.size() == 0
-                ? Response.status(204,"No profiles were found").build()
+                ? ResponseWithStatusAndMessage(204,"No profiles were found")
                 : OkWithEntity(profiles);
     }
 
@@ -42,8 +42,6 @@ public class ProfileService extends BaseService{
         long profileId = ProfileNumerator.getNumerator().getCurrentCounter();
         Profile profile = new Profile(profileId, profileDto.name, profileDto.surname, profileDto.email, profileDto.age);
         Boolean result = profileRepository.insert(profile);
-        return result
-                ? Response.status(204).entity(profile).build()
-                : NotFound("Error");
+        return result ? OkWithEntity(profile) : NotFound("Error");
     }
 }
