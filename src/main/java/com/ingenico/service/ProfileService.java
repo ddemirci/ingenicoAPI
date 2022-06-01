@@ -42,6 +42,6 @@ public class ProfileService extends BaseService{
         long profileId = ProfileNumerator.getNumerator().getCurrentCounter();
         Profile profile = new Profile(profileId, profileDto.name, profileDto.surname, profileDto.email, profileDto.age);
         Boolean result = profileRepository.insert(profile);
-        return result ? OkWithEntity(profile) : NotFound("Error");
+        return result ? Created(profile) : NotFound("Error");
     }
 }

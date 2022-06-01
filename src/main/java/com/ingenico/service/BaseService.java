@@ -8,7 +8,7 @@ public abstract class BaseService {
     }
 
     protected Response ResponseWithStatusAndMessage(int status, String message){
-        return  Response.status(status,message).build();
+        return Response.status(status).entity(message).build();
     }
 
     protected  Response Ok(){ return Response.ok().build(); }
@@ -16,4 +16,6 @@ public abstract class BaseService {
     protected <E> Response OkWithEntity(E entity){
         return Response.ok().entity(entity).build();
     }
+
+    protected <E> Response Created(E entity) { return Response.status(201).entity(entity).build();}
 }

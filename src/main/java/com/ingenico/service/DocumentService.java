@@ -46,7 +46,7 @@ public class DocumentService extends BaseService {
         long documentId = DocumentNumerator.getNumerator().getCurrentCounter();
         Document document = new Document(documentId, documentDto.name, documentDto.profileId);
         Document result = documentRepository.insert(document);
-        return OkWithEntity(result);
+        return Created(result);
     }
 
     @PUT
