@@ -3,8 +3,10 @@ language: java
 jdk:
   - openjdk18
 
-script:
-  - mvn clean package verify
+before_install:
+  - sudo apt install default-jdk
+  - sudo apt-get update -qq
+  - sudo apt install default-jre
 
 after_success:
   - .buildscript/deploy_snapshot.sh
