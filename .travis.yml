@@ -3,8 +3,9 @@ language: java
 jdk:
   - openjdk18
 
-script:
-  - mvn clean package verify
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install oracle-java18-installer
 
 after_success:
   - .buildscript/deploy_snapshot.sh
