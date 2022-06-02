@@ -16,12 +16,13 @@ public class DocumentRepository {
     }
 
     public boolean insert(Document document){
-        Document insertedDocument = documentRepository.put(document.getId(), document);
-        return Objects.equals(insertedDocument,document);
+        int prevCount = documentRepository.size();
+        documentRepository.put(document.getId(), document);
+        int currentCount = documentRepository.size();
+        return currentCount == prevCount + 1;
     }
 
     public boolean update(Document document){
-
         Document updatedDocument =  documentRepository.put(document.getId(), document);
         return Objects.equals(updatedDocument,document);
     }

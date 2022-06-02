@@ -2,6 +2,10 @@ package com.ingenico;
 
 import com.ingenico.controller.DocumentController;
 import com.ingenico.controller.ProfileController;
+import com.ingenico.repository.DocumentRepository;
+import com.ingenico.repository.ProfileRepository;
+import com.ingenico.service.DocumentService;
+import com.ingenico.service.ProfileService;
 import org.eclipse.jetty.server.Server;
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
 import org.glassfish.jersey.jetty.JettyHttpContainerFactory;
@@ -20,8 +24,13 @@ public class MainApp {
         config.register(new AbstractBinder() {
             @Override
             protected void configure() {
-                bind(new DocumentController()).to(DocumentController.class);
-                bind(new ProfileController()).to(ProfileController.class);
+                bind(ProfileController.class).to(ProfileController.class);
+                bind(ProfileService.class).to(ProfileService.class);
+                bind(ProfileRepository.class).to(ProfileRepository.class);
+
+                bind(DocumentController.class).to(DocumentController.class);
+                bind(DocumentService.class).to(DocumentService.class);
+                bind(DocumentRepository.class).to(DocumentRepository.class);
             }
         });
 

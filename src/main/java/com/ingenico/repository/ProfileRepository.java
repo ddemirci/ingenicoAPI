@@ -3,15 +3,16 @@ package com.ingenico.repository;
 import com.ingenico.model.Profile;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class ProfileRepository {
     private static HashMap<Long, Profile> profileRepository = new HashMap<>();
 
     public boolean insert(Profile profile){
-        Profile insertedProfile = profileRepository.put(profile.getId(), profile);
-        return Objects.equals(insertedProfile, profile);
+        int prevCount = profileRepository.size();
+        profileRepository.put(profile.getId(), profile);
+        int currentCount = profileRepository.size();
+        return currentCount == prevCount + 1;
     }
 
     public Profile get(Long id){

@@ -10,9 +10,8 @@ import java.util.List;
 
 public class ProfileService {
 
-    private  @Inject ProfileRepository profileRepository;
+    private @Inject ProfileRepository profileRepository;
 
-    //Might be a dto
     public Profile getProfile(Long id){
         return profileRepository.get(id);
     }
@@ -27,6 +26,4 @@ public class ProfileService {
         boolean result = profileRepository.insert(profile);
         return result ? profile : null;
     }
-
-
 }

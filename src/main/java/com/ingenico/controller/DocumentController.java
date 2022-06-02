@@ -21,7 +21,6 @@ public class DocumentController extends BaseController {
     @GET
     @Path("/profile/{profileId}")
     @Produces(MediaType.APPLICATION_JSON)
-
     public Response GetAll(@PathParam("profileId") Long profileId) {
         Profile owner = profileService.getProfile(profileId);
         if(owner == null)
