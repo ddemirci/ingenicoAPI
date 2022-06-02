@@ -4,27 +4,26 @@ import com.ingenico.model.Document;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class DocumentRepository {
     private static HashMap<Long, Document> documentRepository = new HashMap<>();
 
-    public Document get(Long id, Long ownerId){
-        if(!exists(id))
-            return null;
-        Document document = documentRepository.get(id);
-        if(!OwnsDocument(document,ownerId))
-            return null;
-        return document;
+    public Document get(Long id){
+        if(!exists(id)) return null;
+        return documentRepository.get(id);
     }
 
-    public Document insert(Document document){
-        documentRepository.put(document.getId(), document);
-        return documentRepository.put(document.getId(), document);
+    public boolean insert(Document document){
+        Document insertedDocument = documentRepository.put(document.getId(), document);
+        return Objects.equals(insertedDocument,document);
     }
 
-    public Document update(Document document){
-        return documentRepository.put(document.getId(), document);
+    public boolean update(Document document){
+
+        Document updatedDocument =  documentRepository.put(document.getId(), document);
+        return Objects.equals(updatedDocument,document);
     }
 
     public boolean delete(Long id){

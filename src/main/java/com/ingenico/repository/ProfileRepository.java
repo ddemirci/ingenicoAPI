@@ -1,19 +1,17 @@
 package com.ingenico.repository;
 
-import com.ingenico.helpers.ProfileNumerator;
 import com.ingenico.model.Profile;
-import com.ingenico.model.dto.ProfileDto;
-
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class ProfileRepository {
     private static HashMap<Long, Profile> profileRepository = new HashMap<>();
 
-    public Boolean insert(Profile profile){
-        profileRepository.put(profile.getId(), profile);
-        return true;
+    public boolean insert(Profile profile){
+        Profile insertedProfile = profileRepository.put(profile.getId(), profile);
+        return Objects.equals(insertedProfile, profile);
     }
 
     public Profile get(Long id){
