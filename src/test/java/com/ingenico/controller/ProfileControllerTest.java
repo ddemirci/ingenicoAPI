@@ -1,7 +1,6 @@
-package com.ingenico;
+package com.ingenico.controller;
 
 
-import com.ingenico.controller.ProfileController;
 import com.ingenico.model.Profile;
 import com.ingenico.model.dto.ProfileDto;
 import com.ingenico.service.ProfileService;
@@ -23,7 +22,7 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ProfileTest {
+public class ProfileControllerTest {
 
     @InjectMocks
     private ProfileController profileController;
@@ -40,7 +39,7 @@ public class ProfileTest {
         //Setup
         when(profileService.getProfile(anyLong())).thenReturn(null);
         //Act
-        Response response = profileController.Get(anyLong());
+        Response response = profileController.get(anyLong());
         //Assert
         assertEquals(Response.Status.NOT_FOUND.getStatusCode(), response.getStatus());
         String message = (String) response.getEntity();
@@ -53,7 +52,7 @@ public class ProfileTest {
         Profile profile = GenerateDummyUser(1L);
         when(profileService.getProfile(anyLong())).thenReturn(profile);
         //Act
-        Response response = profileController.Get(anyLong());
+        Response response = profileController.get(anyLong());
         //Assert
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
         Profile result  = (Profile) response.getEntity();
@@ -69,7 +68,7 @@ public class ProfileTest {
         when(profileService.getAllProfiles()).thenReturn(profileList);
 
         //Act
-        Response response = profileController.GetAll();
+        Response response = profileController.getAll();
 
         //Assert
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
