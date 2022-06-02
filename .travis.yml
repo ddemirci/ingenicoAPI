@@ -8,5 +8,6 @@ before_install:
   - sudo apt-get update -qq
   - sudo apt install default-jre
 
+
 after_success:
   - .buildscript/deploy_snapshot.sh
