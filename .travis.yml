@@ -3,5 +3,8 @@ language: java
 jdk:
   - openjdk18
 
+script:
+  - mvn clean package verify
+
 after_success:
   - .buildscript/deploy_snapshot.sh
