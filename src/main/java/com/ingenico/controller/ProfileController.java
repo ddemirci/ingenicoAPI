@@ -18,7 +18,6 @@ public class ProfileController extends BaseController {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response Get(@PathParam("id") Long id) {
-        System.out.println("Profile//GET");
         Profile profile = profileService.getProfile(id);
         return profile == null
                 ? NotFound("Requested profile was not found.")
