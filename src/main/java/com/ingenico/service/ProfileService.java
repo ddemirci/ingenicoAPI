@@ -30,9 +30,7 @@ public class ProfileService extends BaseService{
     @Produces(MediaType.APPLICATION_JSON)
     public Response GetAll() {
         List<Profile> profiles = profileRepository.getAll();
-        return profiles.size() == 0
-                ? ResponseWithStatusAndMessage(204,"No profiles were found")
-                : OkWithEntity(profiles);
+        return OkWithEntity(profiles);
     }
 
     @POST

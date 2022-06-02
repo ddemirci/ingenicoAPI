@@ -29,9 +29,7 @@ public class DocumentService extends BaseService {
             return NotFound("Profile not found");
 
         List<Document> documents = documentRepository.getAll(profileId);
-        return documents.size() == 0
-                ? ResponseWithStatusAndMessage(204,"No documents were found")
-                : OkWithEntity(documents);
+        return OkWithEntity(documents);
     }
 
     @POST
