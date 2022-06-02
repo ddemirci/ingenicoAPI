@@ -1,9 +1,6 @@
 package com.ingenico.repository;
 
-import com.ingenico.helpers.ProfileNumerator;
 import com.ingenico.model.Profile;
-import com.ingenico.model.dto.ProfileDto;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,9 +8,11 @@ import java.util.stream.Collectors;
 public class ProfileRepository {
     private static HashMap<Long, Profile> profileRepository = new HashMap<>();
 
-    public Boolean insert(Profile profile){
+    public boolean insert(Profile profile){
+        int prevCount = profileRepository.size();
         profileRepository.put(profile.getId(), profile);
-        return true;
+        int currentCount = profileRepository.size();
+        return currentCount == prevCount + 1;
     }
 
     public Profile get(Long id){
