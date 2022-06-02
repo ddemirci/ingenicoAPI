@@ -17,7 +17,7 @@ public class ProfileController extends BaseController {
     @Path("/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response Get(@PathParam("id") Long id) {
+    public Response get(@PathParam("id") Long id) {
         Profile profile = profileService.getProfile(id);
         return profile == null
                 ? NotFound("Requested profile was not found.")
@@ -26,7 +26,7 @@ public class ProfileController extends BaseController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response GetAll() {
+    public Response getAll() {
         List<Profile> profiles = profileService.getAllProfiles();
         return OkWithEntity(profiles);
     }

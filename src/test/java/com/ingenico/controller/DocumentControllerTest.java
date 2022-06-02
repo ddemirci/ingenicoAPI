@@ -1,10 +1,8 @@
-package com.ingenico;
+package com.ingenico.controller;
 
-import com.ingenico.controller.DocumentController;
 import com.ingenico.model.Document;
 import com.ingenico.model.Profile;
 import com.ingenico.model.dto.DocumentDto;
-import com.ingenico.model.dto.ProfileDto;
 import com.ingenico.service.DocumentService;
 import com.ingenico.service.ProfileService;
 import jakarta.ws.rs.core.Response;
@@ -18,9 +16,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
@@ -29,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @RunWith(MockitoJUnitRunner.class)
-public class DocumentTest {
+public class DocumentControllerTest {
 
     @InjectMocks
     private DocumentController documentController;
@@ -48,7 +44,7 @@ public class DocumentTest {
         //Setup
         when(profileService.getProfile(anyLong())).thenReturn(null);
         //Act
-        Response response = documentController.GetAll(anyLong());
+        Response response = documentController.getAll(anyLong());
         //Assert
         assertEquals(Response.Status.NOT_FOUND.getStatusCode(), response.getStatus());
         String message = (String) response.getEntity();
@@ -63,7 +59,7 @@ public class DocumentTest {
         when(documentService.getAllDocumentsOfProfile(anyLong())).thenReturn(Collections.emptyList());
 
         //Act
-        Response response = documentController.GetAll(anyLong());
+        Response response = documentController.getAll(anyLong());
 
         //Assert
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
@@ -85,7 +81,7 @@ public class DocumentTest {
         when(documentService.getAllDocumentsOfProfile(anyLong())).thenReturn(docList);
 
         //Act
-        Response response = documentController.GetAll(anyLong());
+        Response response = documentController.getAll(anyLong());
 
         //Assert
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
