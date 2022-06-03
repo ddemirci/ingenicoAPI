@@ -74,7 +74,7 @@ public class DocumentController extends BaseController {
 
         Document document = documentService.getDocument(id);
         if(document == null)
-            return NotFound("Document not found"); //Or document may not be owned by given profile.
+            return NotFound("Document not found");
 
         if(!document.getProfileId().equals(owner.getId()))
             return Forbidden();
