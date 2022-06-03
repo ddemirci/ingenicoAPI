@@ -1,4 +1,5 @@
 # ingenicoAPI
+[![Build Status](https://app.travis-ci.com/ddemirci/ingenicoAPI.svg?branch=master)](https://app.travis-ci.com/ddemirci/ingenicoAPI)
 > Simple Java microservice that allows for two endpoints to be exposed. These are "Document" and "Profile".
 
 ## Table of Contents
@@ -12,10 +13,11 @@
 * [Contact](#contact)
 
 ## Technologies Used
-- Java - version 18
+- Java - version 11
 - Jersey - version 3.0.4
 - JUnit - version 5.8.2
 - Mockito-Core - version 4.5.1
+- Travis CI
 
 ## Features
 List the ready features here:
