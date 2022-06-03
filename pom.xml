@@ -89,12 +89,10 @@
             <version>2.27</version>
             <scope>test</scope>
         </dependency>
-
-
     </dependencies>
 
     <build>
-        <finalName>jersey-jetty</finalName>
+        <finalName>ingenico-api</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
