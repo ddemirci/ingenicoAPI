@@ -1,10 +1,8 @@
 language: java
 
-jdk:
-  - openjdk18
+jdk: openjdk18
 
+install:
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
-  - mvn clean package verify
-
-after_success:
-  - .buildscript/deploy_snapshot.sh
+  - mvn clean install -B
